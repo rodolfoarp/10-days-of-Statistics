@@ -11,14 +11,12 @@ La media ponderada es 38/18 = 2.1 y volver. */
 let x = [10,40,30,50,20];
 let y = [1,2,3,4,5];
 
-function weightedMean(X, W, size = 5) {
+function weightedMean(X, W,size = 5) {
     
-    const mw = [];
-    for(let i = 0; i < size; i++){
-        mw.push(X[i] * W[i]);
-    }
-    
-    let xy = mw.reduce((acum, value) => {
+    const xy = X.map((current,index) => {
+        return current * W[index]
+    })
+    .reduce((acum, value) => {
         return acum + value
     })
     
@@ -27,7 +25,6 @@ function weightedMean(X, W, size = 5) {
     })
     
     return (xy / wi ).toFixed(1);
-    
 }
 
-console.log(weightedMean(x,y));
+console.log(weightedMean(x , y , 5));
